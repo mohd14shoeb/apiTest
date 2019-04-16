@@ -4,34 +4,32 @@ from flask_restful import Api, Resource, reqparse
 app = Flask(__name__)
 api = Api(app)
 
-users = [
-    {
-        "name": "Dejan",
-        "age": 32,
-        "occupation": "Developer"
-    },
-    {
-        "name": "Zan",
-        "age": 23,
-        "occupation": "tester"
-    },
-    {
-        "name": "User3",
-        "age": 99,
-        "occupation": "TestUser"
-    },
+users = [{
+    "name": "Dejan",
+    "age": 32,
+    "occupation": "Developer"
+},
 {
-        "name": "User4",
-        "age": 23,
-        "occupation": "TestUser"
-    }
-]
+    "name": "Zan",
+    "age": 23,
+    "occupation": "tester"
+},
+{
+    "name": "User3",
+    "age": 99,
+    "occupation": "TestUser"
+},
+{
+    "name": "User4",
+    "age": 23,
+    "occupation": "TestUser"
+}]
 
 @app.route("/")
 def usersList():
     import json
     json = json.dumps(users)
-    return  json.encode('utf8')
+    return  json.encode("utf8")
 
 class User(Resource):
     def get(self, name):
