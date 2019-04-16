@@ -31,7 +31,7 @@ users = [
 def usersList():
     import json
     json = json.dumps(users)
-    return  json
+    return  json.encode('utf8')
 
 class User(Resource):
     def get(self, name):
