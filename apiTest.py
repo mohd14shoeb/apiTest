@@ -14,7 +14,7 @@ from models import User
 
 @app.route("/")
 def usersList():
-    return jsonify(users)
+    return "Hello"
 
 @app.route("/add")
 def add_user():
