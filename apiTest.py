@@ -27,9 +27,8 @@ users = [{
 
 @app.route("/")
 def usersList():
-    import json
-    json = json.dumps(users)
-    return  json.encode("utf8")
+    from flask import jsonify
+    return jsonify(users)
 
 class User(Resource):
     def get(self, name):
