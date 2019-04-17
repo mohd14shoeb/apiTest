@@ -68,5 +68,15 @@ def add_user_form():
             return(str(e))
     return render_template("getdata.html")
 
+@app.route("/deleteall")
+def delete_all_users():
+    try:
+        user=User.query.all()
+        db.session.delete(user)
+        db.session.commit()
+        return "Deleted all database entries."
+    except Exception as e:
+        return(str(e))
+
 if __name__ == "__main__":
     app.run()
