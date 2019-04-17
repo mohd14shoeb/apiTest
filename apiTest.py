@@ -71,8 +71,9 @@ def add_user_form():
 @app.route("/deleteall")
 def delete_all_users():
     try:
-        user=User.query.all()
-        db.session.delete(user)
+        users=User.query.all()
+        for user in users:
+            db.session.delete(user)
         db.session.commit()
         return "Deleted all database entries."
     except Exception as e:
