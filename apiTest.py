@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, jsonify, render_template
-from flask_restful import Api, Resource, reqparse
+from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -21,6 +21,8 @@ def add_user():
     name=request.args.get("name")
     age=request.args.get("age")
     occupation=request.args.get("occupation")
+    if name or age or occupation is None:
+        return "Invalid request arguments. Use: /add?name=<name>&age=<age>&occupation=<occupation>"
     try:
         user=User(
             name=name,
