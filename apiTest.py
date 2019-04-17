@@ -16,7 +16,7 @@ from models import User
 def usersList():
     return "Hello"
 
-@app.route("/add")
+@app.route("/add", methods = ["POST"])
 def add_user():
     name=request.args.get("name")
     age=request.args.get("age")
