@@ -92,6 +92,8 @@ def delete_all_users():
 def delete_by_id(id_):
     try:
         user = User.query.filter_by(id=id_).first()
+        if user is None:
+            return "User with this ID does not exist."
         db.session.delete(user)
         db.session.commit()
         return "User deleted. User id={}".format(user.id)
