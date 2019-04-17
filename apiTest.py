@@ -79,5 +79,16 @@ def delete_all_users():
     except Exception as e:
         return(str(e))
 
+@app.route("/delete/<id_>")
+def delete_by_id(id_):
+    try:
+        user=User.query.filter_by(id=id_).first()
+        db.session.delete(user)
+        db.session.commit()
+        return "User deleted. User id={}".format(user.id)
+    except Exception as e:
+        return(str(e))
+
+
 if __name__ == "__main__":
     app.run()
