@@ -24,7 +24,7 @@ def add_user():
     if name or age or occupation is None:
         return "Invalid request arguments. Use: /add?name=<name>&age=<age>&occupation=<occupation>"
     try:
-        user=User(
+        user = User(
             name=name,
             age=age,
             occupation=occupation
@@ -38,7 +38,7 @@ def add_user():
 @app.route("/getall")
 def get_all():
     try:
-        users=User.query.all()
+        users = User.query.all()
         return jsonify([e.serialize() for e in users])
     except Exception as e:
         return(str(e))
@@ -58,7 +58,7 @@ def add_user_form():
         age=request.form.get("age")
         occupation=request.form.get("occupation")
         try:
-            user=User(
+            user = User(
                 name=name,
                 age=age,
                 occupation=occupation
@@ -73,7 +73,7 @@ def add_user_form():
 @app.route("/deleteall")
 def delete_all_users():
     try:
-        users=User.query.all()
+        users = User.query.all()
         for user in users:
             db.session.delete(user)
         db.session.commit()
@@ -84,7 +84,7 @@ def delete_all_users():
 @app.route("/delete/<id_>")
 def delete_by_id(id_):
     try:
-        user=User.query.filter_by(id=id_).first()
+        user = User.query.filter_by(id=id_).first()
         db.session.delete(user)
         db.session.commit()
         return "User deleted. User id={}".format(user.id)
