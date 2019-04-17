@@ -27,7 +27,7 @@ def add_user():
             age=age,
             occupation=occupation
         )
-        if name or age or occupation is None:
+        if name is None or age is None or occupation is None:
             return "Invalid request arguments. Use: /add?name=<name>&age=<age>&occupation=<occupation>"
         db.session.add(user)
         db.session.commit()
